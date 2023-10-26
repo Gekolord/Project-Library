@@ -7,6 +7,7 @@ let pagesForm = document.getElementById('pages');
 let isRead = document.getElementById('isRead');
 let submitBook = document.getElementById('submit');
 let wholeForm = document.getElementById('form');
+let exitButton = document.getElementById('exitButton');
 // deletes book from library and from screen
 function addDelete() {
     let deleteButtons = document.querySelectorAll('.deleteButton')
@@ -142,6 +143,16 @@ display();
 bookButton.addEventListener('click', function() {
     wholeForm.style.display = 'block'
 });
+
+exitButton.addEventListener('click', function() {
+    wholeForm.style.display = 'none'
+    titleForm.value = ''
+    authorForm.value = ''
+    pagesForm.value = ''
+    isRead.checked = false
+
+})
+
 // adds book to library, updates screen
 submitBook.addEventListener('click', function(event){
     if (titleForm.value && authorForm.value && pagesForm.value) {
@@ -151,6 +162,10 @@ submitBook.addEventListener('click', function(event){
         removeAllChildNodes(content)
         display();
         wholeForm.style.display = 'none'
+        titleForm.value = ''
+        authorForm.value = ''
+        pagesForm.value = ''
+        isRead.checked = false
     }
 });
 

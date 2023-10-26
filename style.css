@@ -14,8 +14,20 @@ label {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
+    
 }
 
 button {
     display: block;
+}
+
+#exitButton{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 1.5em;
+}
+
+#exitButton:hover {
+    cursor: pointer;
 }
