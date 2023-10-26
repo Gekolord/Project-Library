@@ -19,7 +19,33 @@ function addDelete() {
 
     }
 }
+// Changes read status inside library
+function changeReadStatus(index) {
+    switch(myLibrary[index].isRead) {
+        case 'not read':
+            myLibrary[index].isRead = 'read'
+            break;
+        case 'read':
+            myLibrary[index].isRead = 'not read'
+            break;
+    }
+}
 
+// Changes displayed read status
+function displayRead(parentNode) {
+    index = parentNode.dataset.indexValue
+    parentNode.children[3].innerHTML = myLibrary[index].isRead
+}
+// Adds functionality to change status butons
+function changeStatusButtons() {
+    let changeButtons = document.querySelectorAll('.changeStatus')
+    for (changeButton of changeButtons) {
+        let bookholder = changeButton.parentNode.parentNode;
+        let index = bookholder.dataset.indexValue;
+        changeButton.addEventListener('click', () => changeReadStatus(index))
+        changeButton.addEventListener('click', () => displayRead(bookholder))
+    }
+}
 
 function Book(title, author, pages, isRead) {
     this.title = title
@@ -93,13 +119,18 @@ function display() {
         deleteButton.innerHTML = 'Delete book'
         buttonContainer.appendChild(deleteButton)
         // deletes book from library with click
+        let changeStatus = document.createElement('button');
+        changeStatus.className = 'changeStatus'
+        changeStatus.innerHTML = 'Change status'
+        buttonContainer.appendChild(changeStatus);
         
         deleteButton.addEventListener('click', () => deleteButton.parentElement.parentElement.remove())
         
 
     }
     assignData();
-    addDelete()
+    addDelete();
+    changeStatusButtons();
 }
 addBookToLibrary('sos', 'ss', 123, 'read');
 addBookToLibrary('sos', 'ses', 123, 'read');
@@ -114,7 +145,7 @@ bookButton.addEventListener('click', function() {
 // adds book to library, updates screen
 submitBook.addEventListener('click', function(event){
     if (titleForm.value && authorForm.value && pagesForm.value) {
-        console.log(titleForm.value)
+
         addBookToLibrary(titleForm.value, authorForm.value, pagesForm.value, isChecked());
         event.preventDefault()
         removeAllChildNodes(content)
