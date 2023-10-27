@@ -1,7 +1,14 @@
 #content {
     display: grid;
-    
+    grid-template-columns: repeat(auto-fit, minmax(150px, 30%));
+    gap: 45px;
+    margin: 40px;
 }
+body {
+    background-color: #f0eef1;
+    margin: 0;
+}
+
 
 label {
     display: block;
@@ -14,13 +21,24 @@ label {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
-    
+    border: 4px solid black;
+    border-radius: 5px;
+    padding: 25px;
+    font-size: 2em;
+    background-color: white;
 }
 
-button {
+button,
+#submit {
     display: block;
+    margin: auto;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
 }
-
+#submit {
+    font-size: 1em;
+}
 #exitButton{
     position: absolute;
     top: 0;
@@ -30,4 +48,67 @@ button {
 
 #exitButton:hover {
     cursor: pointer;
+}
+
+.container,
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    
+}
+
+.buttonContainer > button,
+#submit {
+    margin: 0;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: lightgray;
+    transition: background 0.5s ease-in-out;
+}
+
+.buttonContainer > button:hover,
+#submit:hover {
+    background: rgb(151, 151, 151);
+}
+
+.buttonContainer { 
+    gap: 15px;
+}
+
+.container > p{
+    font-size: 2em;
+    text-align: center;
+    word-break: break-word;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.container,
+header {
+    box-shadow: 4px 5px 5px lightgray;
+}
+
+header {
+    background-color: white;
+    padding: 30px;
+}
+
+
+#new {
+    font-size: 2.5em;
+    background-color: white;
+}
+
+input#isRead {
+    width: 25px;
+    height: 25px;
+}
+
+.headerText {
+    margin: auto;
+    text-align: center;
 }

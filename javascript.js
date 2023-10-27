@@ -8,11 +8,12 @@ let isRead = document.getElementById('isRead');
 let submitBook = document.getElementById('submit');
 let wholeForm = document.getElementById('form');
 let exitButton = document.getElementById('exitButton');
+let wholePage = document.getElementById('body'); 
 // deletes book from library and from screen
 function addDelete() {
     let deleteButtons = document.querySelectorAll('.deleteButton')
     for (const deleteButton of deleteButtons) {
-        index = deleteButton.parentElement.parentElement.dataset.indexValue
+        let index = deleteButton.parentElement.parentElement.dataset.indexValue
         deleteButton.addEventListener('click', () => removeFromLibrary(index))
         deleteButton.addEventListener('click', () => removeAllChildNodes(content))
         deleteButton.addEventListener('click', () => display())
@@ -130,18 +131,19 @@ function display() {
 
     }
     assignData();
-    addDelete();
+
     changeStatusButtons();
+    addDelete();
 }
-addBookToLibrary('sos', 'ss', 123, 'read');
-addBookToLibrary('sos', 'ses', 123, 'read');
-display();
+
+
 
 
 
 
 bookButton.addEventListener('click', function() {
     wholeForm.style.display = 'block'
+
 });
 
 exitButton.addEventListener('click', function() {
